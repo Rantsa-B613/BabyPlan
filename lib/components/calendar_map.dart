@@ -163,6 +163,6 @@ class _CalendarScreenState extends State<CalendarScreen> {
         },
         child: Icon(Icons.add),
       ),
-    );;
+    );
   }
 }
