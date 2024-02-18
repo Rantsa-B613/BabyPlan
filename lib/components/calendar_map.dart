@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:table_calendar/table_calendar.dart';
+import 'notes.dart'; // Importez le fichier des notes
 
 class CalendarScreen extends StatefulWidget {
   @override
@@ -76,58 +77,11 @@ class _CalendarScreenState extends State<CalendarScreen> {
             ),
 
             // ~~~~~~~~ NOTES ~~~~~~~~~//
-            const Padding(
-              padding: EdgeInsets.all(8.0),
-              child: Text(
-                'Toutes les notes:',
-                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-              ),
-            ),
-            ListView.builder(
-              shrinkWrap: true,
-              physics: const NeverScrollableScrollPhysics(),
-              itemCount: _events.length,
-              itemBuilder: (context, index) {
-                final eventDate = _events.keys.elementAt(index);
-                final eventList = _events[eventDate];
-                return Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                      child: Text(
-                        '${eventDate.day}/${eventDate.month}/${eventDate.year}:',
-                        style: const TextStyle(
-                          fontSize: 16,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                    ),
-                    ListView.builder(
-                      shrinkWrap: true,
-                      physics: NeverScrollableScrollPhysics(),
-                      itemCount: eventList?.length ?? 0,
-                      itemBuilder: (context, index) {
-                        return ListTile(
-                          title: Text(eventList![index]),
-                          trailing: IconButton(
-                            icon: Icon(Icons.delete),
-                            onPressed: () {
-                              setState(() {
-                                eventList.removeAt(index);
-                                if (eventList.isEmpty) {
-                                  _events.remove(eventDate);
-                                }
-                              });
-                            },
-                          ),
-                        );
-                      },
-                    ),
-                  ],
-                );
-              },
-            ),
+            NotesList(
+              events: _events,
+              onDelete: _deleteNote,
+              onEdit: _editNote, // Nouveau callback pour l'édition des notes
+            ), // Utilisez le widget NotesList
           ],
         ),
       ),
@@ -164,5 +118,22 @@ class _CalendarScreenState extends State<CalendarScreen> {
         child: Icon(Icons.add),
       ),
     );
+  }
+
+  // Fonction pour supprimer une note
+  void _deleteNote(DateTime date, int noteIndex) {
+    setState(() {
+      _events[date]!.removeAt(noteIndex);
+      if (_events[date]!.isEmpty) {
+        _events.remove(date);
+      }
+    });
+  }
+
+  // Fonction pour modifier une note
+  void _editNote(DateTime date, int noteIndex, String newText) {
+    setState(() {
+      _events[date]![noteIndex] = newText;
+    });
   }
 }
