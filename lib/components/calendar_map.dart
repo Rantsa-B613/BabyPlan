@@ -36,6 +36,7 @@ class _CalendarScreenState extends State<CalendarScreen> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            // ~~~~~~~~ Calendrier ~~~~~~~~~//
             TableCalendar(
               calendarFormat: _calendarFormat,
               focusedDay: _focusedDay,
@@ -73,7 +74,7 @@ class _CalendarScreenState extends State<CalendarScreen> {
                 titleCentered: true,
               ),
             ),
-            Padding(
+            const Padding(
               padding: const EdgeInsets.all(8.0),
               child: Text(
                 'Toutes les notes:',
@@ -112,6 +113,9 @@ class _CalendarScreenState extends State<CalendarScreen> {
                             onPressed: () {
                               setState(() {
                                 eventList.removeAt(index);
+                                if (eventList.isEmpty) {
+                                  _events.remove(eventDate);
+                                }
                               });
                             },
                           ),
