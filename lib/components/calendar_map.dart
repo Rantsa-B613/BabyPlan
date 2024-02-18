@@ -62,7 +62,7 @@ class _CalendarScreenState extends State<CalendarScreen> {
                   color: Colors.yellow,
                   shape: BoxShape.circle,
                 ),
-                todayTextStyle: const TextStyle(color: Colors.black),
+                todayTextStyle: const TextStyle(color: Colors.blue),
                 selectedDecoration: BoxDecoration(
                   color: Theme.of(context).primaryColor,
                   shape: BoxShape.circle,
@@ -74,8 +74,10 @@ class _CalendarScreenState extends State<CalendarScreen> {
                 titleCentered: true,
               ),
             ),
+
+            // ~~~~~~~~ NOTES ~~~~~~~~~//
             const Padding(
-              padding: const EdgeInsets.all(8.0),
+              padding: EdgeInsets.all(8.0),
               child: Text(
                 'Toutes les notes:',
                 style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
@@ -83,7 +85,7 @@ class _CalendarScreenState extends State<CalendarScreen> {
             ),
             ListView.builder(
               shrinkWrap: true,
-              physics: NeverScrollableScrollPhysics(),
+              physics: const NeverScrollableScrollPhysics(),
               itemCount: _events.length,
               itemBuilder: (context, index) {
                 final eventDate = _events.keys.elementAt(index);
@@ -95,7 +97,7 @@ class _CalendarScreenState extends State<CalendarScreen> {
                       padding: const EdgeInsets.symmetric(horizontal: 8.0),
                       child: Text(
                         '${eventDate.day}/${eventDate.month}/${eventDate.year}:',
-                        style: TextStyle(
+                        style: const TextStyle(
                           fontSize: 16,
                           fontWeight: FontWeight.bold,
                         ),
@@ -126,25 +128,41 @@ class _CalendarScreenState extends State<CalendarScreen> {
                 );
               },
             ),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: TextFormField(
-                controller: _eventController,
-                decoration: const InputDecoration(
-                  labelText: 'Ajouter une note',
-                ),
-                onFieldSubmitted: (_) {
-                  setState(() {
-                    _events[_selectedDay] = _events[_selectedDay] ?? [];
-                    _events[_selectedDay]!.add(_eventController.text);
-                    _eventController.clear();
-                  });
-                },
-              ),
-            ),
           ],
         ),
       ),
-    );
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          showDialog(
+            context: context,
+            builder: (BuildContext context) {
+              return AlertDialog(
+                title: Text('Ajouter une note'),
+                content: TextFormField(
+                  controller: _eventController,
+                  decoration: InputDecoration(
+                    labelText: 'Entrez votre note',
+                  ),
+                ),
+                actions: <Widget>[
+                  TextButton(
+                    child: Text('Ajouter'),
+                    onPressed: () {
+                      setState(() {
+                        _events[_selectedDay] = _events[_selectedDay] ?? [];
+                        _events[_selectedDay]!.add(_eventController.text);
+                        _eventController.clear();
+                      });
+                      Navigator.of(context).pop(); // Ferme le dialog après avoir ajouté la note
+                    },
+                  ),
+                ],
+              );
+            },
+          );
+        },
+        child: Icon(Icons.add),
+      ),
+    );;
   }
 }
