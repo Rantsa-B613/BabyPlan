@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:table_calendar/table_calendar.dart';
 import 'notes.dart'; // Importez le fichier des notes
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class CalendarScreen extends StatefulWidget {
   @override
@@ -64,9 +65,62 @@ class _CalendarScreenState extends State<CalendarScreen> {
                         ),
                       ],
                     ),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.stretch,
+                      children: [
+                        Container(
+                          child: Text(
+                            "Salama tompoko ",
+                            style: GoogleFonts.poppins(
+                              fontSize: 16.0,
+                              color: Colors.grey,
+                              fontWeight: FontWeight.w500,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                    const SizedBox(
+                      height: 3.0,
+                    ),
+                    Container(
+                      child: Row(
+                        children: [
+                          Expanded(
+                            child: Wrap(
+                              children: [
+                                Text(
+                                  "Prendre soins de votre ",
+                                  style: GoogleFonts.publicSans(
+                                    fontSize: 26.0,
+                                    color: Colors.black,
+                                    fontWeight: FontWeight.w900,
+                                  ),
+                                ),
+                                Text(
+                                  "ENFANT",
+                                  style: GoogleFonts.righteous(
+                                    fontSize: 28.0,
+                                    color: Colors.purple,
+                                    fontWeight: FontWeight.w900,
+                                  ),
+                                ),
+                                Text(
+                                  " ensemble !!! ",
+                                  style: GoogleFonts.publicSans(
+                                    fontSize: 28.0,
+                                    color: Colors.black,
+                                    fontWeight: FontWeight.w900,
+                                  ),
+                                )
+                              ],
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
                   ],
                 )),
-
             // ~~~~~~~~ Calendrier ~~~~~~~~~//
             TableCalendar(
               calendarFormat: _calendarFormat,
