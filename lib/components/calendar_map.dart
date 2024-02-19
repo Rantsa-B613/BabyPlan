@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:table_calendar/table_calendar.dart';
 import 'notes.dart'; // Importez le fichier des notes
+import 'package:flutter_svg/flutter_svg.dart';
 
 class CalendarScreen extends StatefulWidget {
   @override
@@ -30,13 +31,42 @@ class _CalendarScreenState extends State<CalendarScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Calendrier'),
-      ),
       body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            // ~~~~~~~~ Bar de Navogation ~~~~~~~~~//
+
+            Container(
+                margin: const EdgeInsets.only(
+                  top: 64.0,
+                  left: 16.0,
+                  right: 16.0,
+                ),
+                child: Column(
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        GestureDetector(
+                          onTap: () => print("Ajout liste"),
+                          child: SvgPicture.asset(
+                            "assets/icons/list.svg",
+                            height: 34.0,
+                          ),
+                        ),
+                        GestureDetector(
+                          onTap: () => print("Ajout plats"),
+                          child: SvgPicture.asset(
+                            "assets/icons/add.svg",
+                            height: 34.0,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
+                )),
+
             // ~~~~~~~~ Calendrier ~~~~~~~~~//
             TableCalendar(
               calendarFormat: _calendarFormat,
@@ -80,8 +110,8 @@ class _CalendarScreenState extends State<CalendarScreen> {
             NotesList(
               events: _events,
               onDelete: _deleteNote,
-              onEdit: _editNote, // Nouveau callback pour l'édition des notes
-            ), // Utilisez le widget NotesList
+              onEdit: _editNote,
+            ),
           ],
         ),
       ),
@@ -107,7 +137,8 @@ class _CalendarScreenState extends State<CalendarScreen> {
                         _events[_selectedDay]!.add(_eventController.text);
                         _eventController.clear();
                       });
-                      Navigator.of(context).pop(); // Ferme le dialog après avoir ajouté la note
+                      Navigator.of(context)
+                          .pop(); // Ferme le dialog après avoir ajouté la note
                     },
                   ),
                 ],
