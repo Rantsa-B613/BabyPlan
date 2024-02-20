@@ -20,8 +20,8 @@ class _NotesListState extends State<NotesList> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           const Text(
-            'Toutes les notes:',
-            style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+            'Les dates importantes :',
+            style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.white),
           ),
           ListView.builder(
             shrinkWrap: true,
@@ -40,6 +40,7 @@ class _NotesListState extends State<NotesList> {
                       style: const TextStyle(
                         fontSize: 16,
                         fontWeight: FontWeight.bold,
+                        color: Colors.white
                       ),
                     ),
                   ),
@@ -49,12 +50,12 @@ class _NotesListState extends State<NotesList> {
                     itemCount: eventList?.length ?? 0,
                     itemBuilder: (context, noteIndex) {
                       return ListTile(
-                        title: Text(eventList![noteIndex]),
+                        title: Text(eventList![noteIndex], style: TextStyle(color: Colors.white),),
                         trailing: Row(
                           mainAxisSize: MainAxisSize.min,
                           children: [
                             IconButton(
-                              icon: Icon(Icons.edit),
+                              icon: Icon(Icons.edit, color: Colors.white,),
                               onPressed: () {
                                 showDialog(
                                   context: context,
@@ -82,7 +83,7 @@ class _NotesListState extends State<NotesList> {
                               },
                             ),
                             IconButton(
-                              icon: Icon(Icons.delete),
+                              icon: Icon(Icons.delete, color: Colors.white,),
                               onPressed: () {
                                 setState(() {
                                   widget.onDelete(eventDate, noteIndex);

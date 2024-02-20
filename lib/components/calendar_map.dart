@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:table_calendar/table_calendar.dart';
-import 'notes.dart'; // Importez le fichier des notes
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:google_fonts/google_fonts.dart';
+import 'notes.dart';
+import '../routes/navigation_bar.dart';
 
 class CalendarScreen extends StatefulWidget {
   @override
@@ -36,135 +35,74 @@ class _CalendarScreenState extends State<CalendarScreen> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            // ~~~~~~~~ Bar de Navogation ~~~~~~~~~//
-
-            Container(
-                margin: const EdgeInsets.only(
-                  top: 64.0,
-                  left: 16.0,
-                  right: 16.0,
-                ),
-                child: Column(
-                  children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        GestureDetector(
-                          onTap: () => print("Ajout liste"),
-                          child: SvgPicture.asset(
-                            "assets/icons/list.svg",
-                            height: 34.0,
-                          ),
-                        ),
-                        GestureDetector(
-                          onTap: () => print("Ajout plats"),
-                          child: SvgPicture.asset(
-                            "assets/icons/add.svg",
-                            height: 34.0,
-                          ),
-                        ),
-                      ],
-                    ),
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.stretch,
-                      children: [
-                        Container(
-                          child: Text(
-                            "Salama tompoko ",
-                            style: GoogleFonts.poppins(
-                              fontSize: 16.0,
-                              color: Colors.grey,
-                              fontWeight: FontWeight.w500,
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                    const SizedBox(
-                      height: 3.0,
-                    ),
-                    Container(
-                      child: Row(
-                        children: [
-                          Expanded(
-                            child: Wrap(
-                              children: [
-                                Text(
-                                  "Prendre soins de votre ",
-                                  style: GoogleFonts.publicSans(
-                                    fontSize: 26.0,
-                                    color: Colors.black,
-                                    fontWeight: FontWeight.w900,
-                                  ),
-                                ),
-                                Text(
-                                  "ENFANT",
-                                  style: GoogleFonts.righteous(
-                                    fontSize: 28.0,
-                                    color: Colors.purple,
-                                    fontWeight: FontWeight.w900,
-                                  ),
-                                ),
-                                Text(
-                                  " ensemble !!! ",
-                                  style: GoogleFonts.publicSans(
-                                    fontSize: 28.0,
-                                    color: Colors.black,
-                                    fontWeight: FontWeight.w900,
-                                  ),
-                                )
-                              ],
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ],
-                )),
+            CustomAppNavigationBar(),
+        
             // ~~~~~~~~ Calendrier ~~~~~~~~~//
-            TableCalendar(
-              calendarFormat: _calendarFormat,
-              focusedDay: _focusedDay,
-              firstDay: DateTime.utc(2010, 10, 16),
-              lastDay: DateTime.utc(2030, 3, 14),
-              selectedDayPredicate: (day) {
-                return isSameDay(_selectedDay, day);
-              },
-              onDaySelected: (selectedDay, focusedDay) {
-                setState(() {
-                  _selectedDay = selectedDay;
-                  _focusedDay = focusedDay;
-                });
-              },
-              onPageChanged: (focusedDay) {
-                _focusedDay = focusedDay;
-              },
-              eventLoader: (day) {
-                return _events[day] ?? [];
-              },
-              calendarStyle: CalendarStyle(
-                todayDecoration: const BoxDecoration(
-                  color: Colors.yellow,
-                  shape: BoxShape.circle,
+            SingleChildScrollView(
+              child: Expanded(
+                child: Container(
+                  padding: const EdgeInsets.fromLTRB(15, 20, 15, 20),
+                  child: TableCalendar(
+                    calendarFormat: _calendarFormat,
+                    focusedDay: _focusedDay,
+                    firstDay: DateTime.utc(2010, 10, 16),
+                    lastDay: DateTime.utc(2030, 3, 14),
+                    selectedDayPredicate: (day) {
+                      return isSameDay(_selectedDay, day);
+                    },
+                    onDaySelected: (selectedDay, focusedDay) {
+                      setState(() {
+                        _selectedDay = selectedDay;
+                        _focusedDay = focusedDay;
+                      });
+                    },
+                    onPageChanged: (focusedDay) {
+                      _focusedDay = focusedDay;
+                    },
+                    eventLoader: (day) {
+                      return _events[day] ?? [];
+                    },
+                    calendarStyle: CalendarStyle(
+                      todayDecoration: const BoxDecoration(
+                        color: Colors.yellow,
+                        shape: BoxShape.circle,
+                      ),
+                      todayTextStyle: const TextStyle(color: Colors.blue),
+                      selectedDecoration: BoxDecoration(
+                        color: Theme.of(context).primaryColor,
+                        shape: BoxShape.circle,
+                      ),
+                      selectedTextStyle: const TextStyle(color: Colors.white),
+                    ),
+                    headerStyle: const HeaderStyle(
+                      formatButtonVisible: false,
+                      titleCentered: true,
+                    ),
+                  ),
                 ),
-                todayTextStyle: const TextStyle(color: Colors.blue),
-                selectedDecoration: BoxDecoration(
-                  color: Theme.of(context).primaryColor,
-                  shape: BoxShape.circle,
-                ),
-                selectedTextStyle: const TextStyle(color: Colors.white),
-              ),
-              headerStyle: const HeaderStyle(
-                formatButtonVisible: false,
-                titleCentered: true,
               ),
             ),
-
+        
             // ~~~~~~~~ NOTES ~~~~~~~~~//
-            NotesList(
-              events: _events,
-              onDelete: _deleteNote,
-              onEdit: _editNote,
+            SingleChildScrollView(
+              child: Flexible(
+                child: Container(
+                  padding: const EdgeInsets.fromLTRB(15, 20, 15, 20),
+                  margin: const EdgeInsets.only(right: 0.0, left: 0.0, top: 25.0),
+                  decoration: const BoxDecoration(
+                    color: Colors.purple,
+                    borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(45),
+                      topRight: Radius.circular(45),
+                    ),
+                  ),
+                  child: NotesList(
+                    events: _events,
+                    onDelete: _deleteNote,
+                    onEdit: _editNote,
+                  ),
+                ),
+              ),
             ),
           ],
         ),
