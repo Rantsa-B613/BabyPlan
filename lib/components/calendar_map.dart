@@ -31,6 +31,7 @@ class _CalendarScreenState extends State<CalendarScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.grey[200],
       body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -62,17 +63,17 @@ class _CalendarScreenState extends State<CalendarScreen> {
                     eventLoader: (day) {
                       return _events[day] ?? [];
                     },
-                    calendarStyle: CalendarStyle(
-                      todayDecoration: const BoxDecoration(
-                        color: Colors.yellow,
+                    calendarStyle:const  CalendarStyle(
+                      todayDecoration: BoxDecoration(
+                        color: Colors.lightBlueAccent,
                         shape: BoxShape.circle,
                       ),
-                      todayTextStyle: const TextStyle(color: Colors.blue),
+                      todayTextStyle: TextStyle(color: Colors.blue),
                       selectedDecoration: BoxDecoration(
-                        color: Theme.of(context).primaryColor,
+                        color: Colors.lightGreen,
                         shape: BoxShape.circle,
                       ),
-                      selectedTextStyle: const TextStyle(color: Colors.white),
+                      selectedTextStyle: TextStyle(color: Colors.white),
                     ),
                     headerStyle: const HeaderStyle(
                       formatButtonVisible: false,
@@ -87,10 +88,10 @@ class _CalendarScreenState extends State<CalendarScreen> {
             SingleChildScrollView(
               child: Flexible(
                 child: Container(
-                  padding: const EdgeInsets.fromLTRB(15, 20, 15, 20),
+                  padding: const EdgeInsets.fromLTRB(15, 20, 15, 150),
                   margin: const EdgeInsets.only(right: 0.0, left: 0.0, top: 25.0),
                   decoration: const BoxDecoration(
-                    color: Colors.purple,
+                    color: Colors.lightGreen,
                     borderRadius: BorderRadius.only(
                       topLeft: Radius.circular(45),
                       topRight: Radius.circular(45),
@@ -154,7 +155,7 @@ class _CalendarScreenState extends State<CalendarScreen> {
   }
 
   // Fonction pour modifier une note
-  void _editNote(DateTime date, int noteIndex, String newText) {
+  void _editNote(DateTime date, int noteIndex, String newText, Color color) {
     setState(() {
       _events[date]![noteIndex] = newText;
     });
