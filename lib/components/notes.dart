@@ -20,7 +20,7 @@ class _NotesListState extends State<NotesList> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Padding(
+        const Padding(
           padding: const EdgeInsets.only(left: 8.0, top: 8.0),
           child: Text(
             'Notes importantes : ',
@@ -35,7 +35,7 @@ class _NotesListState extends State<NotesList> {
           itemBuilder: (context, index) {
             final eventDate = widget.events.keys.elementAt(index);
             final eventList = widget.events[eventDate];
-            final currentColor = _selectedColors[eventDate] ?? Colors.red;
+            final currentColor = _selectedColors[eventDate] ?? Colors.pink[100];
 
             return Container(
               padding: const EdgeInsets.fromLTRB(15, 20, 15, 0),

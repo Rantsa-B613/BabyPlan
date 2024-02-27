@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:kellan/components/details_health.dart';
 import 'package:table_calendar/table_calendar.dart';
 import 'notes.dart';
 import '../routes/navigation_bar.dart';
@@ -37,34 +38,19 @@ class _CalendarScreenState extends State<CalendarScreen> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             CustomAppNavigationBar(),
-        
-            // ~~~~~~~~ Calendrier ~~~~~~~~~//
-            const SizedBox(height: 20.0,),
 
-            const Padding(
-              padding: EdgeInsets.symmetric(horizontal: 25.0),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(
-                    "Calendrier de suivis !",
-                    style: TextStyle(
-                        fontWeight: FontWeight.bold, fontSize: 14),
-                  ),
-                  Text(
-                    "+",
-                    style: TextStyle(
-                        fontWeight: FontWeight.bold, fontSize: 18),
-                  ),
-                ],
-              ),
+            const SizedBox(
+              height: 5.0,
             ),
+            // ~~~~~~~~ Calendrier ~~~~~~~~~//
             SingleChildScrollView(
               child: Expanded(
                 child: Padding(
-                  padding: const EdgeInsets.only(top: 20.0, left: 20.0, right: 20.0),
+                  padding:
+                      const EdgeInsets.only(top: 20.0, left: 20.0, right: 20.0),
                   child: Container(
-                    decoration: BoxDecoration(color: Colors.white,
+                    decoration: BoxDecoration(
+                      color: Colors.white,
                       borderRadius: BorderRadius.circular(12),
                     ),
                     padding: const EdgeInsets.fromLTRB(15, 20, 15, 20),
@@ -93,7 +79,7 @@ class _CalendarScreenState extends State<CalendarScreen> {
                           color: Colors.pink[100],
                           shape: BoxShape.circle,
                         ),
-                        todayTextStyle: TextStyle(color: Colors.blue),
+                        todayTextStyle: TextStyle(color: Colors.white),
                         selectedDecoration: BoxDecoration(
                           color: Colors.pink[100],
                           shape: BoxShape.circle,
@@ -109,13 +95,14 @@ class _CalendarScreenState extends State<CalendarScreen> {
                 ),
               ),
             ),
-        
+
             // ~~~~~~~~ NOTES ~~~~~~~~~//
             SingleChildScrollView(
               child: Flexible(
                 child: Container(
                   padding: const EdgeInsets.fromLTRB(15, 20, 15, 150),
-                  margin: const EdgeInsets.only(right: 0.0, left: 0.0, top: 25.0),
+                  margin:
+                      const EdgeInsets.only(right: 0.0, left: 0.0, top: 25.0),
                   decoration: BoxDecoration(
                     color: Colors.deepPurple[100],
                     borderRadius: const BorderRadius.only(

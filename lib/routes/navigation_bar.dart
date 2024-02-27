@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:kellan/components/details_health.dart';
 //import 'package:flutter_svg/flutter_svg.dart';
 //import 'package:google_fonts/google_fonts.dart';
 import 'package:kellan/components/details_screen.dart';
@@ -9,7 +10,7 @@ class CustomAppNavigationBar extends StatelessWidget {
     return Container(
       child: Column(
         children: [
-          const SizedBox(height: 50.0),
+          const SizedBox(height: 60.0),
           Column(
             children: [
               Padding(
@@ -21,22 +22,21 @@ class CustomAppNavigationBar extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          "Bonjour, ",
+                          "Bonjour ! ",
                           style: TextStyle(
-                              fontWeight: FontWeight.bold, fontSize: 18),
+                              fontWeight: FontWeight.bold, fontSize: 16),
                         ),
-                        SizedBox(height: 1.0),
                         Text(
-                          "Les parents ",
+                          "Pennons soins de vous ✨",
                           style: TextStyle(
-                              fontWeight: FontWeight.bold, fontSize: 24),
+                              fontWeight: FontWeight.bold, fontSize: 20),
                         ),
                       ],
                     ),
                     GestureDetector(
                       onTap: () => Navigator.of(context).push(
                         MaterialPageRoute(
-                          builder: (context) => Details_Screen(),
+                          builder: (context) => HealthScreen(),
                         ),
                       ),
                       child: Container(
@@ -63,12 +63,17 @@ class CustomAppNavigationBar extends StatelessWidget {
                   child: Row(
                     children: [
                       Container(
-                        height: 100,
-                        width: 100,
-                        color: Colors.deepPurple[200],
+                        height: 150,
+                        width: 125,
+                        decoration: const BoxDecoration(
+                          image: DecorationImage(
+                            image: AssetImage('assets/logo.png'),
+                            fit: BoxFit.cover, // Ou utilisez un autre mode d'ajustement selon vos besoins
+                          ),
+                        ),
                       ),
                       const SizedBox(
-                        width: 25.0,
+                        width: 15.0,
                       ),
                       Expanded(
                         child: Column(
@@ -79,21 +84,29 @@ class CustomAppNavigationBar extends StatelessWidget {
                               style: TextStyle(
                                   fontSize: 16, fontWeight: FontWeight.bold),
                             ),
+                            const SizedBox(height: 5,),
                             const Text(
                               "Votre carnet de médicale est présent.",
                               style: TextStyle(fontSize: 14),
                             ),
-                            SizedBox(height:  10,),
-                            Container(
-                              padding: EdgeInsets.all(8),
-                              decoration: BoxDecoration(
-                                color: Colors.deepPurple[300],
-                                borderRadius: BorderRadius.circular(12),
+                            const SizedBox(height:  12,),
+                            GestureDetector(
+                              onTap: () => Navigator.of(context).push(
+                                MaterialPageRoute(
+                                  builder: (context) => HealthScreen(),
+                                ),
                               ),
-                              child: const Center(
-                                child: Text(
-                                  "Vérifier",
-                                  style: TextStyle(color: Colors.white),
+                              child: Container(
+                                padding: EdgeInsets.all(8),
+                                decoration: BoxDecoration(
+                                  color: Colors.deepPurple[300],
+                                  borderRadius: BorderRadius.circular(12),
+                                ),
+                                child: const Center(
+                                  child: Text(
+                                    "Vérifier",
+                                    style: TextStyle(color: Colors.white),
+                                  ),
                                 ),
                               ),
                             )
