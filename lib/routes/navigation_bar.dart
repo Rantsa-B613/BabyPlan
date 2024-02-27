@@ -59,6 +59,14 @@ class CustomAppNavigationBar extends StatelessWidget {
                   padding: const EdgeInsets.all(20),
                   decoration: BoxDecoration(color: Colors.pink[100],
                   borderRadius: BorderRadius.circular(12),
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.grey.shade600,
+                          spreadRadius: 1,
+                          blurRadius: 5,
+                          offset: const Offset(0, 5),
+                        ),
+                      ]
                   ),
                   child: Row(
                     children: [

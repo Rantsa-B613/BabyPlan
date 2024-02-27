@@ -39,7 +39,25 @@ class _CalendarScreenState extends State<CalendarScreen> {
             CustomAppNavigationBar(),
 
             const SizedBox(
-              height: 5.0,
+              height: 35.0,
+            ),
+            const Padding(
+              padding: EdgeInsets.only(left: 25.0),
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    "Agenda de note 📋",
+                    style: TextStyle(
+                        color: Colors.black,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 18),
+                  ),
+                ],
+              ),
+            ),
+            const SizedBox(
+              height: 1.5,
             ),
             // ~~~~~~~~ Calendrier ~~~~~~~~~//
             SingleChildScrollView(
@@ -51,6 +69,16 @@ class _CalendarScreenState extends State<CalendarScreen> {
                     decoration: BoxDecoration(
                       color: Colors.white,
                       borderRadius: BorderRadius.circular(12),
+                      boxShadow: const [
+                        BoxShadow(
+                            color: Colors.grey,
+                            blurRadius: 10.0,
+                            spreadRadius: 2.0,
+                            offset: Offset(
+                              7.0, // Move to right 7.0 horizontally
+                              8.0, // Move to bottom 8.0 Vertically
+                            ))
+                      ],
                     ),
                     padding: const EdgeInsets.fromLTRB(15, 20, 15, 20),
                     child: TableCalendar(
