@@ -91,7 +91,8 @@ class _HealthScreenState extends State<HealthScreen> {
                                 ),
                                 Expanded(
                                   child: Column(
-                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
                                     children: [
                                       const Text(
                                         "Carnet de santé",
@@ -112,7 +113,8 @@ class _HealthScreenState extends State<HealthScreen> {
                                       GestureDetector(
                                         onTap: () => Navigator.of(context).push(
                                           MaterialPageRoute(
-                                            builder: (context) => CalendarScreen(),
+                                            builder: (context) =>
+                                                CalendarScreen(),
                                           ),
                                         ),
                                         child: Container(
@@ -125,8 +127,8 @@ class _HealthScreenState extends State<HealthScreen> {
                                           child: const Center(
                                             child: Text(
                                               "Caléndrier",
-                                              style:
-                                                  TextStyle(color: Colors.white),
+                                              style: TextStyle(
+                                                  color: Colors.white),
                                             ),
                                           ),
                                         ),
@@ -153,33 +155,18 @@ class _HealthScreenState extends State<HealthScreen> {
                   children: [
                     Text(
                       "Résumer ",
-                      style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold, fontSize: 18),
+                      style: TextStyle(
+                          color: Colors.black,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 18),
                     ),
                   ],
                 ),
               ),
-              const SizedBox(height: 10.0,),
-              Padding(
-                padding: const EdgeInsets.only(left: 15.0, right: 25.0),
-                child: Container(
-                  height: 100,
-                  child: ListView(
-                    scrollDirection: Axis.horizontal,
-                    children: [
-                      StateButton(),
-                      StateButton(),
-                      StateButton(),
-                      StateButton(),
-                      StateButton(),
-                      StateButton(),
-                      StateButton(),
-                      StateButton(),
-                      StateButton(),
-                      StateButton(),
-                    ],
-                  ),
-                ),
+              const SizedBox(
+                height: 10.0,
               ),
+              StateButton(),
             ],
           ),
         ));

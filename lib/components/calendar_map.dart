@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:kellan/components/details_health.dart';
 import 'package:table_calendar/table_calendar.dart';
 import 'notes.dart';
 import '../routes/navigation_bar.dart';
@@ -79,12 +78,12 @@ class _CalendarScreenState extends State<CalendarScreen> {
                           color: Colors.pink[100],
                           shape: BoxShape.circle,
                         ),
-                        todayTextStyle: TextStyle(color: Colors.white),
+                        todayTextStyle: const TextStyle(color: Colors.white),
                         selectedDecoration: BoxDecoration(
                           color: Colors.pink[100],
                           shape: BoxShape.circle,
                         ),
-                        selectedTextStyle: TextStyle(color: Colors.white),
+                        selectedTextStyle: const TextStyle(color: Colors.white),
                       ),
                       headerStyle: const HeaderStyle(
                         formatButtonVisible: false,
@@ -127,16 +126,16 @@ class _CalendarScreenState extends State<CalendarScreen> {
             context: context,
             builder: (BuildContext context) {
               return AlertDialog(
-                title: Text('Ajouter une note'),
+                title: const Text('Ajouter une note'),
                 content: TextFormField(
                   controller: _eventController,
-                  decoration: InputDecoration(
+                  decoration: const InputDecoration(
                     labelText: 'Entrez votre note',
                   ),
                 ),
                 actions: <Widget>[
                   TextButton(
-                    child: Text('Ajouter'),
+                    child: const Text('Ajouter'),
                     onPressed: () {
                       setState(() {
                         _events[_selectedDay] = _events[_selectedDay] ?? [];
@@ -152,7 +151,7 @@ class _CalendarScreenState extends State<CalendarScreen> {
             },
           );
         },
-        child: Icon(Icons.add),
+        child: const Icon(Icons.add),
       ),
     );
   }
