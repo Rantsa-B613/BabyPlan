@@ -39,45 +39,71 @@ class _CalendarScreenState extends State<CalendarScreen> {
             CustomAppNavigationBar(),
         
             // ~~~~~~~~ Calendrier ~~~~~~~~~//
+            const SizedBox(height: 20.0,),
+
+            const Padding(
+              padding: EdgeInsets.symmetric(horizontal: 25.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    "Calendrier de suivis !",
+                    style: TextStyle(
+                        fontWeight: FontWeight.bold, fontSize: 14),
+                  ),
+                  Text(
+                    "+",
+                    style: TextStyle(
+                        fontWeight: FontWeight.bold, fontSize: 18),
+                  ),
+                ],
+              ),
+            ),
             SingleChildScrollView(
               child: Expanded(
-                child: Container(
-                  padding: const EdgeInsets.fromLTRB(15, 20, 15, 20),
-                  child: TableCalendar(
-                    calendarFormat: _calendarFormat,
-                    focusedDay: _focusedDay,
-                    firstDay: DateTime.utc(2010, 10, 16),
-                    lastDay: DateTime.utc(2030, 3, 14),
-                    selectedDayPredicate: (day) {
-                      return isSameDay(_selectedDay, day);
-                    },
-                    onDaySelected: (selectedDay, focusedDay) {
-                      setState(() {
-                        _selectedDay = selectedDay;
-                        _focusedDay = focusedDay;
-                      });
-                    },
-                    onPageChanged: (focusedDay) {
-                      _focusedDay = focusedDay;
-                    },
-                    eventLoader: (day) {
-                      return _events[day] ?? [];
-                    },
-                    calendarStyle:const  CalendarStyle(
-                      todayDecoration: BoxDecoration(
-                        color: Colors.lightBlueAccent,
-                        shape: BoxShape.circle,
-                      ),
-                      todayTextStyle: TextStyle(color: Colors.blue),
-                      selectedDecoration: BoxDecoration(
-                        color: Colors.lightGreen,
-                        shape: BoxShape.circle,
-                      ),
-                      selectedTextStyle: TextStyle(color: Colors.white),
+                child: Padding(
+                  padding: const EdgeInsets.only(top: 20.0, left: 20.0, right: 20.0),
+                  child: Container(
+                    decoration: BoxDecoration(color: Colors.white,
+                      borderRadius: BorderRadius.circular(12),
                     ),
-                    headerStyle: const HeaderStyle(
-                      formatButtonVisible: false,
-                      titleCentered: true,
+                    padding: const EdgeInsets.fromLTRB(15, 20, 15, 20),
+                    child: TableCalendar(
+                      calendarFormat: _calendarFormat,
+                      focusedDay: _focusedDay,
+                      firstDay: DateTime.utc(2010, 10, 16),
+                      lastDay: DateTime.utc(2030, 3, 14),
+                      selectedDayPredicate: (day) {
+                        return isSameDay(_selectedDay, day);
+                      },
+                      onDaySelected: (selectedDay, focusedDay) {
+                        setState(() {
+                          _selectedDay = selectedDay;
+                          _focusedDay = focusedDay;
+                        });
+                      },
+                      onPageChanged: (focusedDay) {
+                        _focusedDay = focusedDay;
+                      },
+                      eventLoader: (day) {
+                        return _events[day] ?? [];
+                      },
+                      calendarStyle: CalendarStyle(
+                        todayDecoration: BoxDecoration(
+                          color: Colors.pink[100],
+                          shape: BoxShape.circle,
+                        ),
+                        todayTextStyle: TextStyle(color: Colors.blue),
+                        selectedDecoration: BoxDecoration(
+                          color: Colors.pink[100],
+                          shape: BoxShape.circle,
+                        ),
+                        selectedTextStyle: TextStyle(color: Colors.white),
+                      ),
+                      headerStyle: const HeaderStyle(
+                        formatButtonVisible: false,
+                        titleCentered: true,
+                      ),
                     ),
                   ),
                 ),
@@ -90,9 +116,9 @@ class _CalendarScreenState extends State<CalendarScreen> {
                 child: Container(
                   padding: const EdgeInsets.fromLTRB(15, 20, 15, 150),
                   margin: const EdgeInsets.only(right: 0.0, left: 0.0, top: 25.0),
-                  decoration: const BoxDecoration(
-                    color: Colors.lightGreen,
-                    borderRadius: BorderRadius.only(
+                  decoration: BoxDecoration(
+                    color: Colors.deepPurple[100],
+                    borderRadius: const BorderRadius.only(
                       topLeft: Radius.circular(45),
                       topRight: Radius.circular(45),
                     ),

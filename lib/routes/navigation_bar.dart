@@ -1,103 +1,111 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:google_fonts/google_fonts.dart';
+//import 'package:flutter_svg/flutter_svg.dart';
+//import 'package:google_fonts/google_fonts.dart';
 import 'package:kellan/components/details_screen.dart';
 
 class CustomAppNavigationBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.only(
-        top: 64.0,
-        left: 16.0,
-        right: 16.0,
-      ),
       child: Column(
         children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              GestureDetector(
-                onTap: () => Navigator.of(context).push(
-                  MaterialPageRoute(
-                    builder: (context) => Details_Screen(),
-                  ),
-                ),
-                child: SvgPicture.asset(
-                  "assets/icons/list.svg",
-                  height: 34.0,
-                ),
-              ),
-              GestureDetector(
-                onTap: () => Navigator.of(context).push(
-                  MaterialPageRoute(
-                    builder: (context) => Details_Screen(),
-                  ),
-                ),
-                child: SvgPicture.asset(
-                  "assets/icons/add.svg",
-                  height: 34.0,
-                ),
-              ),
-            ],
-          ),
-
-          const SizedBox(height: 10.0),
-
+          const SizedBox(height: 50.0),
           Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              Container(
-                child: Text(
-                  "ça va ?",
-                  style: GoogleFonts.poppins(
-                    fontSize: 16.0,
-                    color: Colors.white,
-                    fontWeight: FontWeight.w500,
-                  ),
+              Padding(
+                padding: EdgeInsets.symmetric(horizontal: 25.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    const Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          "Bonjour, ",
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold, fontSize: 18),
+                        ),
+                        SizedBox(height: 1.0),
+                        Text(
+                          "Les parents ",
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold, fontSize: 24),
+                        ),
+                      ],
+                    ),
+                    GestureDetector(
+                      onTap: () => Navigator.of(context).push(
+                        MaterialPageRoute(
+                          builder: (context) => Details_Screen(),
+                        ),
+                      ),
+                      child: Container(
+                        padding: EdgeInsets.all(12),
+                        decoration: BoxDecoration(
+                            color: Colors.deepPurple[100],
+                            borderRadius: BorderRadius.circular(12)),
+                        child: Icon(Icons.person),
+                      ),
+                    ),
+                  ],
                 ),
               ),
-            ],
-          ),
-          const SizedBox(
-            height: 3.0,
-          ),
-          Container(
-            child: Row(
-              children: [
-                Expanded(
-                  child: Wrap(
+              const SizedBox(
+                height: 25.0,
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 25.0),
+                child: Container(
+                  padding: const EdgeInsets.all(20),
+                  decoration: BoxDecoration(color: Colors.pink[100],
+                  borderRadius: BorderRadius.circular(12),
+                  ),
+                  child: Row(
                     children: [
-                      Text(
-                        "Prennnons soins de votre ",
-                        style: GoogleFonts.publicSans(
-                          fontSize: 26.0,
-                          color: Colors.black,
-                          fontWeight: FontWeight.w900,
-                        ),
+                      Container(
+                        height: 100,
+                        width: 100,
+                        color: Colors.deepPurple[200],
                       ),
-                      Text(
-                        "ENFANT",
-                        style: GoogleFonts.righteous(
-                          fontSize: 28.0,
-                          color: Colors.lightGreen,
-                          fontWeight: FontWeight.w900,
-                        ),
+                      const SizedBox(
+                        width: 25.0,
                       ),
-                      Text(
-                        " ensemble !!! ",
-                        style: GoogleFonts.publicSans(
-                          fontSize: 28.0,
-                          color: Colors.black,
-                          fontWeight: FontWeight.w900,
+                      Expanded(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            const Text(
+                              "Comment ça va ?",
+                              style: TextStyle(
+                                  fontSize: 16, fontWeight: FontWeight.bold),
+                            ),
+                            const Text(
+                              "Votre carnet de médicale est présent.",
+                              style: TextStyle(fontSize: 14),
+                            ),
+                            SizedBox(height:  10,),
+                            Container(
+                              padding: EdgeInsets.all(8),
+                              decoration: BoxDecoration(
+                                color: Colors.deepPurple[300],
+                                borderRadius: BorderRadius.circular(12),
+                              ),
+                              child: const Center(
+                                child: Text(
+                                  "Vérifier",
+                                  style: TextStyle(color: Colors.white),
+                                ),
+                              ),
+                            )
+                          ],
                         ),
                       )
                     ],
                   ),
                 ),
-              ],
-            ),
-          ),
+              )
+            ],
+          )
         ],
       ),
     );
