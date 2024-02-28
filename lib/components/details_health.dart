@@ -116,7 +116,7 @@ class _HealthScreenState extends State<HealthScreen> {
                                         style: TextStyle(fontSize: 14),
                                       ),
                                       const SizedBox(
-                                        height: 12,
+                                        height: 15,
                                       ),
                                       GestureDetector(
                                         onTap: () => Navigator.of(context).push(
@@ -162,7 +162,7 @@ class _HealthScreenState extends State<HealthScreen> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      "Résumer ",
+                      "Vue d'ensemble :",
                       style: TextStyle(
                           color: Colors.black,
                           fontWeight: FontWeight.bold,

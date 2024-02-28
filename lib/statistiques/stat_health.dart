@@ -8,8 +8,8 @@ class StateButton extends StatefulWidget {
 }
 
 class _StateButtonState extends State<StateButton> {
-  List<String> buttonTexts = ["35 Kg", "25 Cm", "25 Cm", "25 Cm"];
-  List<String> imagePaths = ["assets/logo.png", "assets/logo.png", "assets/logo.png", "assets/logo.png"];
+  List<String> buttonTexts = ["8 mois", "85 cm", "8 kg", "Bonne santé"];
+  List<String> imagePaths = ["assets/images/trois.png", "assets/images/deux.png", "assets/images/un.png", "assets/images/trois.png"];
 
   Widget buildButton({required String imagePath, required int index}) {
     return Padding(
@@ -23,18 +23,31 @@ class _StateButtonState extends State<StateButton> {
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(20),
             color: Colors.deepPurple[100],
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.grey.shade600,
+                  spreadRadius: 1,
+                  blurRadius: 5,
+                  offset: const Offset(0, 5),
+                ),
+              ]
           ),
           child: Row(
             children: [
-              Image.asset(
-                imagePath,
-                width: 150, // Adjust as per your requirement
-                height: 150, // Adjust as per your requirement
+              Container(
+                height: 200,
+                width: 75,
+                decoration: BoxDecoration(
+                  image: DecorationImage(
+                    image: AssetImage(imagePath),
+                    fit: BoxFit
+                        .cover, // Ou utilisez un autre mode d'ajustement selon vos besoins
+                  ),
+                ),
               ),
-              SizedBox(width: 1),
               Text(
                 buttonTexts[index],
-                style: TextStyle(fontWeight: FontWeight.bold, color: Colors.white),
+                style: TextStyle(fontWeight: FontWeight.bold, color: Colors.white, fontSize: 16),
               ),
             ],
           ),
@@ -77,16 +90,16 @@ class _StateButtonState extends State<StateButton> {
     return Padding(
       padding: const EdgeInsets.only(left:  5.0),
       child: Container(
-        height:  100,
+        height:  110,
         child: ListView(
           scrollDirection: Axis.horizontal,
           children: [
             buildButton(imagePath: imagePaths[0], index:  0),
-            const SizedBox(width:  8.0),
+            SizedBox(width:  8.0), // Removed const
             buildButton(imagePath: imagePaths[1], index:  1),
-            const SizedBox(width:  8.0),
+            SizedBox(width:  8.0), // Removed const
             buildButton(imagePath: imagePaths[2], index:  2),
-            const SizedBox(width:  10.0),
+            SizedBox(width:  10.0), // Removed const
             buildButton(imagePath: imagePaths[3], index:  3),
           ],
         ),

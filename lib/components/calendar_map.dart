@@ -47,7 +47,7 @@ class _CalendarScreenState extends State<CalendarScreen> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    "Agenda de note 📋",
+                    "Agenda de note :",
                     style: TextStyle(
                         color: Colors.black,
                         fontWeight: FontWeight.bold,
@@ -122,6 +122,8 @@ class _CalendarScreenState extends State<CalendarScreen> {
                 ),
               ),
             ),
+
+            const SizedBox(height: 15.0,),
 
             // ~~~~~~~~ NOTES ~~~~~~~~~//
             SingleChildScrollView(

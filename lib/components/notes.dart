@@ -39,7 +39,7 @@ class _NotesListState extends State<NotesList> {
 
             return Container(
               padding: const EdgeInsets.fromLTRB(15, 20, 15, 0),
-              margin: const EdgeInsets.only(right: 0.0, left: 0.0, top: 25.0),
+              margin: const EdgeInsets.only(right: 2.0, left: 5.0, top: 25.0),
               decoration: BoxDecoration(
                 color: currentColor,
                 borderRadius: const BorderRadius.only(
@@ -74,6 +74,7 @@ class _NotesListState extends State<NotesList> {
                         trailing: Row(
                           mainAxisSize: MainAxisSize.min,
                           children: [
+                            SizedBox(width: 25.0,),
                             IconButton(
                               icon: const Icon(Icons.edit, color: Colors.white,),
                               onPressed: () {

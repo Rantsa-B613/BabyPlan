@@ -3,7 +3,6 @@ import 'package:kellan/components/details_health.dart';
 //import 'package:flutter_svg/flutter_svg.dart';
 //import 'package:google_fonts/google_fonts.dart';
 
-
 class CustomAppNavigationBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -43,7 +42,7 @@ class CustomAppNavigationBar extends StatelessWidget {
                         padding: EdgeInsets.all(12),
                         decoration: BoxDecoration(
                             color: Colors.deepPurple[100],
-                            borderRadius: BorderRadius.circular(12)),
+                            borderRadius: BorderRadius.circular(12),),
                         child: Icon(Icons.person),
                       ),
                     ),
@@ -57,8 +56,9 @@ class CustomAppNavigationBar extends StatelessWidget {
                 padding: const EdgeInsets.symmetric(horizontal: 25.0),
                 child: Container(
                   padding: const EdgeInsets.all(20),
-                  decoration: BoxDecoration(color: Colors.pink[100],
-                  borderRadius: BorderRadius.circular(12),
+                  decoration: BoxDecoration(
+                      color: Colors.pink[100],
+                      borderRadius: BorderRadius.circular(12),
                       boxShadow: [
                         BoxShadow(
                           color: Colors.grey.shade600,
@@ -66,8 +66,7 @@ class CustomAppNavigationBar extends StatelessWidget {
                           blurRadius: 5,
                           offset: const Offset(0, 5),
                         ),
-                      ]
-                  ),
+                      ]),
                   child: Row(
                     children: [
                       Container(
@@ -76,7 +75,8 @@ class CustomAppNavigationBar extends StatelessWidget {
                         decoration: const BoxDecoration(
                           image: DecorationImage(
                             image: AssetImage('assets/logo.png'),
-                            fit: BoxFit.cover, // Ou utilisez un autre mode d'ajustement selon vos besoins
+                            fit: BoxFit
+                                .cover, // Ou utilisez un autre mode d'ajustement selon vos besoins
                           ),
                         ),
                       ),
@@ -92,12 +92,16 @@ class CustomAppNavigationBar extends StatelessWidget {
                               style: TextStyle(
                                   fontSize: 16, fontWeight: FontWeight.bold),
                             ),
-                            const SizedBox(height: 5,),
+                            const SizedBox(
+                              height: 5,
+                            ),
                             const Text(
                               "Votre carnet de médicale est présent.",
                               style: TextStyle(fontSize: 14),
                             ),
-                            const SizedBox(height:  12,),
+                            const SizedBox(
+                              height: 15,
+                            ),
                             GestureDetector(
                               onTap: () => Navigator.of(context).push(
                                 MaterialPageRoute(
