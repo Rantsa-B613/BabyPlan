@@ -23,14 +23,7 @@ class _StateButtonState extends State<StateButton> {
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(20),
             color: Colors.deepPurple[100],
-              boxShadow: [
-                BoxShadow(
-                  color: Colors.grey.shade600,
-                  spreadRadius: 1,
-                  blurRadius: 5,
-                  offset: const Offset(0, 5),
-                ),
-              ]
+
           ),
           child: Row(
             children: [
@@ -41,7 +34,7 @@ class _StateButtonState extends State<StateButton> {
                   image: DecorationImage(
                     image: AssetImage(imagePath),
                     fit: BoxFit
-                        .cover, // Ou utilisez un autre mode d'ajustement selon vos besoins
+                        .cover,
                   ),
                 ),
               ),

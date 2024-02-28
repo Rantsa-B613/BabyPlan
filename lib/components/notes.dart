@@ -48,6 +48,14 @@ class _NotesListState extends State<NotesList> {
                   bottomLeft: Radius.circular(15),
                   bottomRight: Radius.circular(15),
                 ),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.grey.shade600,
+                      spreadRadius: 1,
+                      blurRadius: 5,
+                      offset: const Offset(0, 5),
+                    ),
+                  ]
               ),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,

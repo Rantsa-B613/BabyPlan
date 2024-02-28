@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:kellan/agenda/medical_details.dart';
 import 'package:kellan/statistiques/stat_health.dart';
 
 import 'calendar_map.dart';
@@ -175,6 +176,33 @@ class _HealthScreenState extends State<HealthScreen> {
                 height: 10.0,
               ),
               StateButton(),
+
+              const SizedBox(
+                height: 35.0,
+              ),
+
+              const Padding(
+                padding: EdgeInsets.only(left: 25.0),
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      "Revue médicale",
+                      style: TextStyle(
+                          color: Colors.black,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 14),
+                    ),
+                  ],
+                ),
+              ),
+
+              const SizedBox(
+                height: 25.0,
+              ),
+
+              const Details_medical()
+
             ],
           ),
         ));

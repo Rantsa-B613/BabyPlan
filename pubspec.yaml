@@ -40,6 +40,7 @@ dependencies:
   flutter_svg: ^2.0.9
   google_fonts: ^6.1.0
   flutter_colorpicker:
+  flutter_slidable: ^3.0.1
 
 dev_dependencies:
   flutter_test:
