@@ -21,7 +21,7 @@ class _NotesListState extends State<NotesList> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         const Padding(
-          padding: const EdgeInsets.only(left: 8.0, top: 8.0),
+          padding: EdgeInsets.only(left: 8.0, top: 8.0),
           child: Text(
             'Notes importantes : ',
             style: TextStyle(fontSize: 26, fontWeight: FontWeight.bold, color: Colors.white),
@@ -30,7 +30,7 @@ class _NotesListState extends State<NotesList> {
         ListView.builder(
           padding: const EdgeInsets.only(top: 2.0),
           shrinkWrap: true,
-          physics: NeverScrollableScrollPhysics(),
+          physics: const NeverScrollableScrollPhysics(),
           itemCount: widget.events.length,
           itemBuilder: (context, index) {
             final eventDate = widget.events.keys.elementAt(index);
@@ -74,7 +74,7 @@ class _NotesListState extends State<NotesList> {
                   ListView.builder(
                     padding: const EdgeInsets.only(top: 2.0),
                     shrinkWrap: true,
-                    physics: NeverScrollableScrollPhysics(),
+                    physics: const NeverScrollableScrollPhysics(),
                     itemCount: eventList?.length ?? 0,
                     itemBuilder: (context, noteIndex) {
                       return ListTile(
@@ -82,7 +82,7 @@ class _NotesListState extends State<NotesList> {
                         trailing: Row(
                           mainAxisSize: MainAxisSize.min,
                           children: [
-                            SizedBox(width: 25.0,),
+                            const SizedBox(width: 25.0,),
                             IconButton(
                               icon: const Icon(Icons.edit, color: Colors.white,),
                               onPressed: () {
@@ -100,7 +100,7 @@ class _NotesListState extends State<NotesList> {
                                               eventList[noteIndex] = newValue;
                                             },
                                           ),
-                                          SizedBox(height: 20),
+                                          const SizedBox(height: 20),
                                           ElevatedButton(
                                             onPressed: () {
                                               showDialog(
@@ -120,11 +120,10 @@ class _NotesListState extends State<NotesList> {
                                                         pickerAreaHeightPercent: 0.7,
                                                         enableAlpha: true,
                                                         displayThumbColor: true,
-                                                        showLabel: true,
                                                         paletteType: PaletteType.hsv,
                                                         pickerAreaBorderRadius: const BorderRadius.only(
-                                                          topLeft: const Radius.circular(2.0),
-                                                          topRight: const Radius.circular(2.0),
+                                                          topLeft: Radius.circular(2.0),
+                                                          topRight: Radius.circular(2.0),
                                                         ),
                                                       ),
                                                     ),
@@ -141,7 +140,7 @@ class _NotesListState extends State<NotesList> {
                                                 },
                                               );
                                             },
-                                            child: Text('Choisir la couleur'),
+                                            child: const Text('Choisir la couleur'),
                                           ),
                                         ],
                                       ),
@@ -186,11 +185,10 @@ class _NotesListState extends State<NotesList> {
                                           pickerAreaHeightPercent: 0.7,
                                           enableAlpha: true,
                                           displayThumbColor: true,
-                                          showLabel: true,
                                           paletteType: PaletteType.hsv,
                                           pickerAreaBorderRadius: const BorderRadius.only(
-                                            topLeft: const Radius.circular(2.0),
-                                            topRight: const Radius.circular(2.0),
+                                            topLeft: Radius.circular(2.0),
+                                            topRight: Radius.circular(2.0),
                                           ),
                                         ),
                                       ),

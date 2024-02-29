@@ -22,7 +22,7 @@ class _HealthScreenState extends State<HealthScreen> {
               Column(
                 children: [
                   Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 25.0),
+                    padding: const EdgeInsets.symmetric(horizontal: 25.0),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
@@ -50,11 +50,11 @@ class _HealthScreenState extends State<HealthScreen> {
                             ),
                           ),
                           child: Container(
-                            padding: EdgeInsets.all(12),
+                            padding: const EdgeInsets.all(12),
                             decoration: BoxDecoration(
                                 color: Colors.deepPurple[100],
                                 borderRadius: BorderRadius.circular(12)),
-                            child: Icon(Icons.home),
+                            child: const Icon(Icons.home),
                           ),
                         ),
                       ],
@@ -123,7 +123,7 @@ class _HealthScreenState extends State<HealthScreen> {
                                     ),
                                   ),
                                   child: Container(
-                                    padding: EdgeInsets.all(8),
+                                    padding: const EdgeInsets.all(8),
                                     decoration: BoxDecoration(
                                       color: Colors.deepPurple[300],
                                       borderRadius:
@@ -171,7 +171,7 @@ class _HealthScreenState extends State<HealthScreen> {
         const SizedBox(
           height: 10.0,
         ),
-        StateButton(),
+        const StateButton(),
       ],
     );
   }

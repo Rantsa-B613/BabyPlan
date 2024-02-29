@@ -93,15 +93,12 @@ class _Details_medicalState extends State<Details_medical> {
       body: SingleChildScrollView(
         child: Column(
           children: <Widget>[
-            Container(
-              // Ajustez la hauteur selon vos besoins
-              child: HealthScreen(),
-            ),
+            const HealthScreen(),
             const SizedBox(
               height: 25.0,
             ),
             const Padding(
-              padding: const EdgeInsets.only(left: 23.0),
+              padding: EdgeInsets.only(left: 23.0),
               child: Row(
                 children: [
                   Text(
@@ -130,22 +127,21 @@ class _Details_medicalState extends State<Details_medical> {
             const SizedBox(
               height: 20.0,
             ),
-            Container(
-              child: ListView.builder(
-                physics: NeverScrollableScrollPhysics(),
-                shrinkWrap: true,
-                itemCount: todaysHabitList.length,
-                padding: EdgeInsets.only(bottom: 1.0),
-                itemBuilder: (BuildContext context, int index) {
-                  return HabitTile(
-                    habitName: todaysHabitList[index][0],
-                    habitCompleted: todaysHabitList[index][1],
-                    onChanged: (value) => checkBoxTapped(value, index),
-                    settingsTapped: (context) => openHabitSettings(index),
-                    deleteTapped: (context) => deletedHabit(index),
-                  );
-                },
-              ),
+
+            ListView.builder(
+              physics: const NeverScrollableScrollPhysics(),
+              shrinkWrap: true,
+              itemCount: todaysHabitList.length,
+              padding: const EdgeInsets.only(bottom: 1.0),
+              itemBuilder: (BuildContext context, int index) {
+                return HabitTile(
+                  habitName: todaysHabitList[index][0],
+                  habitCompleted: todaysHabitList[index][1],
+                  onChanged: (value) => checkBoxTapped(value, index),
+                  settingsTapped: (context) => openHabitSettings(index),
+                  deleteTapped: (context) => deletedHabit(index),
+                );
+              },
             ),
 
             const SizedBox(
