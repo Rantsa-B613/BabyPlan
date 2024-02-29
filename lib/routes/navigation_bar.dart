@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:kellan/components/details_health.dart';
+import 'package:kellan/agenda/medical_details.dart';
 //import 'package:flutter_svg/flutter_svg.dart';
 //import 'package:google_fonts/google_fonts.dart';
 
@@ -38,7 +38,7 @@ class CustomAppNavigationBar extends StatelessWidget {
                     GestureDetector(
                       onTap: () => Navigator.of(context).push(
                         MaterialPageRoute(
-                          builder: (context) => HealthScreen(),
+                          builder: (context) => Details_medical(),
                         ),
                       ),
                       child: Container(
@@ -108,7 +108,7 @@ class CustomAppNavigationBar extends StatelessWidget {
                             GestureDetector(
                               onTap: () => Navigator.of(context).push(
                                 MaterialPageRoute(
-                                  builder: (context) => HealthScreen(),
+                                  builder: (context) => Details_medical(),
                                 ),
                               ),
                               child: Container(

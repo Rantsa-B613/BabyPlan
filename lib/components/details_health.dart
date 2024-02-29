@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:kellan/agenda/medical_details.dart';
 import 'package:kellan/statistiques/stat_health.dart';
 
 import 'calendar_map.dart';
@@ -14,197 +13,166 @@ class HealthScreen extends StatefulWidget {
 class _HealthScreenState extends State<HealthScreen> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        backgroundColor: Colors.grey[200],
-        body: SingleChildScrollView(
+    return Column(
+      children: [
+        Container(
           child: Column(
             children: [
-              Container(
-                child: Column(
-                  children: [
-                    const SizedBox(height: 60.0),
-                    Column(
+              const SizedBox(height: 60.0),
+              Column(
+                children: [
+                  Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 25.0),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Padding(
-                          padding: EdgeInsets.symmetric(horizontal: 25.0),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              const Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Text(
-                                    "Suivis ! ",
-                                    style: TextStyle(
-                                        fontWeight: FontWeight.bold,
-                                        fontSize: 16),
-                                  ),
-                                  Text(
-                                    "Vérifier votre santé 🩺",
-                                    style: TextStyle(
-                                        fontWeight: FontWeight.bold,
-                                        fontSize: 20),
-                                  ),
-                                ],
-                              ),
-                              GestureDetector(
-                                onTap: () => Navigator.of(context).push(
-                                  MaterialPageRoute(
-                                    builder: (context) => CalendarScreen(),
-                                  ),
-                                ),
-                                child: Container(
-                                  padding: EdgeInsets.all(12),
-                                  decoration: BoxDecoration(
-                                      color: Colors.deepPurple[100],
-                                      borderRadius: BorderRadius.circular(12)),
-                                  child: Icon(Icons.home),
-                                ),
-                              ),
-                            ],
+                        const Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              "Suivis ! ",
+                              style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 16),
+                            ),
+                            Text(
+                              "Vérifier votre santé 🩺",
+                              style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 20),
+                            ),
+                          ],
+                        ),
+                        GestureDetector(
+                          onTap: () => Navigator.of(context).push(
+                            MaterialPageRoute(
+                              builder: (context) => CalendarScreen(),
+                            ),
+                          ),
+                          child: Container(
+                            padding: EdgeInsets.all(12),
+                            decoration: BoxDecoration(
+                                color: Colors.deepPurple[100],
+                                borderRadius: BorderRadius.circular(12)),
+                            child: Icon(Icons.home),
                           ),
                         ),
-                        const SizedBox(
-                          height: 25.0,
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 25.0),
-                          child: Container(
-                            padding: const EdgeInsets.all(20),
-                            decoration: BoxDecoration(
-                              color: Colors.pink[100],
-                              borderRadius: BorderRadius.circular(12),
-                                boxShadow: [
-                                  BoxShadow(
-                                    color: Colors.grey.shade600,
-                                    spreadRadius: 1,
-                                    blurRadius: 5,
-                                    offset: const Offset(0, 5),
-                                  ),
-                                ]
+                      ],
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 25.0,
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 25.0),
+                    child: Container(
+                      padding: const EdgeInsets.all(20),
+                      decoration: BoxDecoration(
+                          color: Colors.pink[100],
+                          borderRadius: BorderRadius.circular(12),
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.grey.shade600,
+                              spreadRadius: 1,
+                              blurRadius: 5,
+                              offset: const Offset(0, 5),
                             ),
-                            child: Row(
+                          ]
+                      ),
+                      child: Row(
+                        children: [
+                          Container(
+                            height: 150,
+                            width: 125,
+                            decoration: const BoxDecoration(
+                              image: DecorationImage(
+                                image: AssetImage('assets/logo01.png'),
+                                fit: BoxFit.cover,
+                              ),
+                            ),
+                          ),
+                          const SizedBox(
+                            width: 15.0,
+                          ),
+                          Expanded(
+                            child: Column(
+                              crossAxisAlignment:
+                              CrossAxisAlignment.start,
                               children: [
-                                Container(
-                                  height: 150,
-                                  width: 125,
-                                  decoration: const BoxDecoration(
-                                    image: DecorationImage(
-                                      image: AssetImage('assets/logo01.png'),
-                                      fit: BoxFit.cover,
-                                    ),
-                                  ),
+                                const Text(
+                                  "Carnet de santé",
+                                  style: TextStyle(
+                                      fontSize: 16,
+                                      fontWeight: FontWeight.bold),
                                 ),
                                 const SizedBox(
-                                  width: 15.0,
+                                  height: 5,
                                 ),
-                                Expanded(
-                                  child: Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      const Text(
-                                        "Carnet de santé",
+                                const Text(
+                                  "Noter vos dates des santé dans un agenda.",
+                                  style: TextStyle(fontSize: 14),
+                                ),
+                                const SizedBox(
+                                  height: 15,
+                                ),
+                                GestureDetector(
+                                  onTap: () => Navigator.of(context).push(
+                                    MaterialPageRoute(
+                                      builder: (context) =>
+                                          CalendarScreen(),
+                                    ),
+                                  ),
+                                  child: Container(
+                                    padding: EdgeInsets.all(8),
+                                    decoration: BoxDecoration(
+                                      color: Colors.deepPurple[300],
+                                      borderRadius:
+                                      BorderRadius.circular(12),
+                                    ),
+                                    child: const Center(
+                                      child: Text(
+                                        "Caléndrier",
                                         style: TextStyle(
-                                            fontSize: 16,
-                                            fontWeight: FontWeight.bold),
+                                            color: Colors.white),
                                       ),
-                                      const SizedBox(
-                                        height: 5,
-                                      ),
-                                      const Text(
-                                        "Noter vos dates des santé dans un agenda.",
-                                        style: TextStyle(fontSize: 14),
-                                      ),
-                                      const SizedBox(
-                                        height: 15,
-                                      ),
-                                      GestureDetector(
-                                        onTap: () => Navigator.of(context).push(
-                                          MaterialPageRoute(
-                                            builder: (context) =>
-                                                CalendarScreen(),
-                                          ),
-                                        ),
-                                        child: Container(
-                                          padding: EdgeInsets.all(8),
-                                          decoration: BoxDecoration(
-                                            color: Colors.deepPurple[300],
-                                            borderRadius:
-                                                BorderRadius.circular(12),
-                                          ),
-                                          child: const Center(
-                                            child: Text(
-                                              "Caléndrier",
-                                              style: TextStyle(
-                                                  color: Colors.white),
-                                            ),
-                                          ),
-                                        ),
-                                      )
-                                    ],
+                                    ),
                                   ),
                                 )
                               ],
                             ),
-                          ),
-                        )
-                      ],
-                    )
-                  ],
-                ),
-              ),
-              const SizedBox(
-                height: 35.0,
-              ),
-              const Padding(
-                padding: EdgeInsets.only(left: 25.0),
-                child: Row(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      "Vue d'ensemble :",
-                      style: TextStyle(
-                          color: Colors.black,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 18),
+                          )
+                        ],
+                      ),
                     ),
-                  ],
-                ),
-              ),
-              const SizedBox(
-                height: 10.0,
-              ),
-              StateButton(),
-
-              const SizedBox(
-                height: 35.0,
-              ),
-
-              const Padding(
-                padding: EdgeInsets.only(left: 25.0),
-                child: Row(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      "Revue médicale",
-                      style: TextStyle(
-                          color: Colors.black,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 14),
-                    ),
-                  ],
-                ),
-              ),
-
-              const SizedBox(
-                height: 25.0,
-              ),
-
-              const Details_medical()
-
+                  )
+                ],
+              )
             ],
           ),
-        ));
+        ),
+        const SizedBox(
+          height: 35.0,
+        ),
+        const Padding(
+          padding: EdgeInsets.only(left: 25.0),
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                "Vue d'ensemble :",
+                style: TextStyle(
+                    color: Colors.black,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 18),
+              ),
+            ],
+          ),
+        ),
+        const SizedBox(
+          height: 10.0,
+        ),
+        StateButton(),
+      ],
+    );
   }
 }
