@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+
 import '../components/details_health.dart';
 import '../components/habit_tile.dart';
 import '../components/my_fab.dart';
@@ -95,29 +97,29 @@ class _Details_medicalState extends State<Details_medical> {
           children: <Widget>[
             const HealthScreen(),
             const SizedBox(
-              height: 25.0,
+              height: 8.0,
             ),
-            const Padding(
-              padding: EdgeInsets.only(left: 23.0),
+            Padding(
+              padding: const EdgeInsets.only(left: 23.0),
               child: Row(
                 children: [
                   Text(
                     "Carnet",
-                    style: TextStyle(
+                    style: GoogleFonts.cormorantGaramond(
                         color: Colors.black,
                         fontWeight: FontWeight.bold,
-                        fontSize: 30),
+                        fontSize: 36),
                   ),
-                   SizedBox(
+                   const SizedBox(
                     width: 8.0,
                   ),
                   Padding(
-                    padding: EdgeInsets.only(top: 10.0),
+                    padding: EdgeInsets.only(top: 8.5),
                     child: Text(
-                      "Notes récentes",
-                      style: TextStyle(
-                          color: Colors.black,
-                          fontSize: 14,
+                      "de notes récente",
+                      style: GoogleFonts.cormorantGaramond(
+                          color: Colors.grey,
+                          fontSize: 21,
                           fontWeight: FontWeight.bold),
                     ),
                   ),
@@ -125,7 +127,7 @@ class _Details_medicalState extends State<Details_medical> {
               ),
             ),
             const SizedBox(
-              height: 20.0,
+              height: 8.0,
             ),
 
             ListView.builder(

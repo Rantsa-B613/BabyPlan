@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:table_calendar/table_calendar.dart';
+import 'package:google_fonts/google_fonts.dart';
+
 import 'notes.dart';
 import '../routes/navigation_bar.dart';
 
@@ -39,25 +41,22 @@ class _CalendarScreenState extends State<CalendarScreen> {
             CustomAppNavigationBar(),
 
             const SizedBox(
-              height: 35.0,
+              height: 25.0,
             ),
-            const Padding(
-              padding: EdgeInsets.only(left: 25.0),
+             Padding(
+              padding: const EdgeInsets.only(left: 25.0),
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
                     "Agenda de note :",
-                    style: TextStyle(
+                    style: GoogleFonts.cormorantGaramond(
                         color: Colors.black,
                         fontWeight: FontWeight.bold,
-                        fontSize: 18),
+                        fontSize: 22),
                   ),
                 ],
               ),
-            ),
-            const SizedBox(
-              height: 1.5,
             ),
             // ~~~~~~~~ Calendrier ~~~~~~~~~//
             SingleChildScrollView(

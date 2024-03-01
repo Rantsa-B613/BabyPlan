@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:kellan/statistiques/stat_health.dart';
+import 'package:google_fonts/google_fonts.dart';
+
 
 import 'calendar_map.dart';
 
@@ -151,17 +153,25 @@ class _HealthScreenState extends State<HealthScreen> {
           ),
         ),
         const SizedBox(
-          height: 35.0,
+          height: 20.0,
         ),
-        const Padding(
-          padding: EdgeInsets.only(left: 25.0),
+        Padding(
+          padding: EdgeInsets.only(left: 21.0, right: 21.0),
           child: Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.end,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
-                "Vue d'ensemble :",
-                style: TextStyle(
+                "Vue d'ensemble",
+                style: GoogleFonts.cormorantGaramond(
                     color: Colors.black,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 22),
+              ),
+              Text(
+                "résumer",
+                style: GoogleFonts.cormorantGaramond(
+                    color: Colors.grey,
                     fontWeight: FontWeight.bold,
                     fontSize: 18),
               ),
